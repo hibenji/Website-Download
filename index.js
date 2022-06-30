@@ -29,11 +29,20 @@ app.get('/url/:url', (req, res) => {
             } else {
                 console.log('Oh God, Downloaded!');
                 fs.rmSync(url_new, { recursive: true, force: true });
-                res.send('https://hibenji-cipher-gf-website-downloader-r4gxrwwp7hwqp6-3000.githubpreview.dev/' + url_new + '.zip')
+                res.send('http://download.benji.link:3000/' + url_new + '.zip')
             }
         });
+
     });
+
+    process.on('uncaughtException', (err) => {
+        res.end("ERROR");
+        fs.rmSync(url_new, { recursive: true, force: true });
+        console.log('Caught exception: ', err);
+    })
+
 });
+
 
 
 app.listen(port, () => {
