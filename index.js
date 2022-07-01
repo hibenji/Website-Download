@@ -19,6 +19,7 @@ app.get('/url/:url', (req, res) => {
     directory: url_new,
     recursive: 1,
     maxRecursiveDepth: 2,
+    maxDepth: 2,
     };
 
     scrape(options).then((result) => {
