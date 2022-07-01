@@ -44,6 +44,10 @@ app.get('/url/:url', (req, res) => {
 
 });
 
+process.on('uncaughtException', (err) => {
+    console.log('Caught exception: ', err);
+})
+
 
 
 app.listen(port, () => {
